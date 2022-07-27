@@ -1,160 +1,60 @@
 <!doctype html>
 <html>
+
 <head>
-<title>Coin Flip</title>
-<meta name="description" content="Our first page">
-<meta name="keywords" content="html tutorial template">
-<!-- import basic styles from cdn -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Coin Flip - Toss a coin</title>
+    <meta name="description" content="Toss a coin to get a completely random heads/tails or true/false result.">
+    <meta name="keywords" content="coin toss, coin flip, yes no, descision">
+    <!-- import basic styles from cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- import js file -->
+    <script src="script.js"></script>
+
+    <!-- seo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Pietervw">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 day">
+    <meta name="language" content="English">
+    <meta name="document-class" content="Published">
+
+    <!-- //todo rename repository to coin-flip -->
+    <!-- <link rel="canonical" href="https://coinflip.webr.co.za/"> -->
+    <!-- <link rel="shortcut icon" href="favicon.ico">  -->
+    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+    <!-- Google analytics -->
 </head>
+
 <body>
 
-<!-- bootstrap form -->
-<div class="container">
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-<h1>Coin Flip</h1>
-    <form id="frm" action="">
-    
-    
-    
-        <input id="btnGo" type="submit" value=" Flip 👋">
-    </form>
-    <br />
-    <label id="lblResult">Click "Flip" to get going</label>
-    <br />
-    <label id="lblTimestamp" style="font-size:x-small"></label>
+    <!-- bootstrap form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Coin Flip</h1>
+                <form id="frm" action="">
+                    <input id="btnGo" type="submit" value=" Flip 👋">
+                </form>
+                <br />
+                <label id="lblResult">Click "Flip" to get going</label>
+                <br />
+                <label id="lblTimestamp" style="font-size:x-small"></label>
 
-    <!-- results table -->
-    <table class="table table-striped" id="tblResults">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Result</th>
-                <th>Timestamp</th>
-            </tr>
-        </thead>
-        <tbody >
-        </tbody>
-    </table>
-</div>
-
-
+                <!-- results table -->
+                <table class="table table-striped" id="tblResults">
+                    <thead>
+                        <tr>
+                            <th>Result</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 </body>
-
-<script>
-
-// on form submit, flip a coin and display the result
-document.getElementById("frm").onsubmit = function() {
-
-    disableButton();
-    // flip a coin
-    var result = flipCoin();
-    var text = formatResult(result);
-    // display the result
-    document.getElementById("lblResult").innerHTML = text;
-    // add bootstrap success style to label
-    document.getElementById("lblResult").className =  getResultClass(result);
-    // display the timestamp
-    document.getElementById("lblTimestamp").innerHTML = new Date().toLocaleTimeString();
-    
-    saveResult(result);
-    displayResults();
-
-    // prevent the form from submitting
-    return false;
-}
-
-// format result for display
-function formatResult(result) {
-    return result.result ? "Heads" : "Tails";
-}
-
-// get result class
-function getResultClass(result) {
-    return result.result ? "label label-success" : "label label-danger";
-}
-
-// disable button for 1 seconds
-function disableButton() {
-    document.getElementById("btnGo").disabled = true;
-    setTimeout(function() {
-        document.getElementById("btnGo").disabled = false;
-    }, 1000);
-}
-
-// function to flip a coin
-function flipCoin() {    
-    return {
-        result: Math.random() < 0.5,
-        timestamp: new Date()
-    };
-}
-
-
-// add the results to local storage
-function saveResult(result) {
-    var results = getResults();
-    debugger;
-    results.push(result);
-
-    localStorage.setItem("results", JSON.stringify(results));
-}
-    
-
-// get all reuslts from local storage, ordered by timestamp
-function getResults() {
-    var results = JSON.parse(localStorage.getItem("results"));
-    if (!results) {
-        results = [];
-    }
-    return results;
-}
-
-// clear results from local storage
-function clearResults() {
-    localStorage.clear('result');
-}
-
-// display results in table
-function displayResults() {
-    var results = getResults();
-    var tbl = document.getElementById("tblResults");
-    var tblBody = tbl.tBodies[0];
-    tblBody.innerHTML = "";
-    for (var i = 0; i < results.length; i++) {
-        var row = tblBody.insertRow(i);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        cell1.innerHTML = i + 1;
-        cell2.innerHTML = formatResult(results[i]).result ? "Heads" : "Tails";        
-        cell2.innerHTML = '<label class=\"' + getResultClass(results[i]) + '\">' + formatResult(results[i]) + "</label>";
-        cell3.innerHTML = results[i].timestamp;
-    }
-
-    // reverse the table so the newest results are at the top
-    tbl.tBodies[0].innerHTML = tbl.tBodies[0].innerHTML.split("</tr>").reverse().join("</tr>");
-} 
-
-displayResults();
-    
-
-
-// var tries = 10000000;
-// var trues = 0;
-// var falses = 0;
-// for (var i = 0; i < tries; i++) {
-//     var result = flipCoin();
-//     if (result == true) {
-//         trues++;
-//     } else {
-//         falses++;
-//     }
-// }
-
-// console.log('Trues: ' + trues/tries*100 + '%');
-// console.log('Falses: ' + falses/tries*100 + '%');
-
-</script>
 </html>
