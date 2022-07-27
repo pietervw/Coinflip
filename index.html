@@ -32,21 +32,31 @@
     <!-- bootstrap form -->
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h1>Coin Flip</h1>
+            <div class="col-sm-12">
+                <h3>🤞🏻 Coin Flip </h3>
                 <form id="frm" action="">
-                    <input id="btnGo" type="submit" value="Flip 👋" class="btn btn-lg btn-primary">
+                    <input id="btnGo" type="submit" value="👋 Flip" class="btn btn-lg btn-primary">
                 </form>
                 <br />
-                <label id="lblResult">Click "Flip" to get going</label>
-                <br />
-                <label id="lblTimestamp" style="font-size:x-small"></label>
+                <div style="min-height:55px; text-align: center;">
+                <label id="lblResult" class="label label-default round">👆🏻 Flip the freaking coin!</label>
+            </div>
+        </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-12">
+
+
+
+            <a href="#" id="btnClearHistory" style="float:right">❌ Clear history</a>
                 <!-- results table -->
                 <table class="table table-striped" id="tblResults">
                     <thead>
                         <tr>
-                            <th>Result</th>
+                            <th>
+                                History
+                            </th>
                             <th>Timestamp</th>
                         </tr>
                     </thead>
@@ -55,5 +65,16 @@
                 </table>
             </div>
         </div>
+
+        <style>
+            .round {
+                border-radius: -83%;
+                padding: 8px;
+                font-size: x-large;
+                font-weight: bold;
+                text-align: center;
+                display: block;
+            }
+        </style>
 </body>
 </html>
