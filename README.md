@@ -1,0 +1,2 @@
+# Coinflip
+ Toss a coin
