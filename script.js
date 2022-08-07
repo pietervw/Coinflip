@@ -74,7 +74,7 @@ function flipCoin() {
 document.getElementById("btnClearHistory").onclick = function () {
     clearResults();
     // reset btnGo
-    document.getElementById("btnGo").innerHTML = "👋 Click here to begin!";
+    document.getElementById("btnGo").innerHTML = "👋 Flip!";
     document.getElementById("btnGo").className = "label label-default round";
     displayResults();
     hideLabel();
@@ -130,7 +130,6 @@ else {
     // hide btnClearHistory
     document.getElementById("btnClearHistory").style.display = "none";
 }
-
     // reverse the table so the newest results are at the top
     tbl.tBodies[0].innerHTML = tbl.tBodies[0].innerHTML.split("</tr>").reverse().join("</tr>");
 }

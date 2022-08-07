@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <title>Coin Flip - Toss a coin</title>
-    <meta name="description" content="Toss a coin to get a completely random heads/tails or true/false result.">
+    <title>Coin Flip - An instant 50/50, heads or tails, coin toss</title>
+    <meta name="description" content="Toss a coin. A simple way to make decisions. Coin flip. Heads is yes, tails is no.">
     <meta name="keywords" content="coin toss, coin flip, yes no, descision">
     <!-- import basic styles from cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,6 +11,7 @@
     
     <!-- import js file -->
     <script src="script.js"></script>
+    <link rel="canonical" href="https://coin-flip.webr.co.za/">
 
     <!-- seo -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,22 +20,19 @@
     <meta name="revisit-after" content="7 day">
     <meta name="language" content="English">
     <meta name="document-class" content="Published">
-
-    <link rel="canonical" href="https://coin-flip.webr.co.za/">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
-
     <!-- bootstrap form -->
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h3>🤞🏻 Coin Flip </h3>
+                <h4>Welcome to Coin Flip</h4>
                <br />
                <div class="row">
                 <!-- center align column with bootstrap offset -->
@@ -49,7 +47,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12" id="divTblResults">
             <a href="#" id="btnClearHistory" style="float:right">❌ Clear history</a>
                 <!-- results table -->
                 <table class="table table-striped" id="tblResults">
@@ -67,6 +65,24 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 bg-success">
+           <h4>Coin Flipping</h4>        
+            <p>Heads or tails? Coin tossing is the practice of throwing a coin in the air and checking which side is showing when it lands, in order to choose between two alternatives, heads or tails, sometimes used to resolve a dispute between two parties.</p>
+
+            <p><strong>To play </strong>simply click/tap the coin. The flip result will display instantly! Your results will also be timestamped and saved in the browser and displayed in the History table. </p>
+
+            <p><strong>Just Flip A Coin is perfect for:</strong>
+
+                <ul>
+                    <li>Leaving simple yes/no decisions up to chance</li>
+                    <li>Playing Heads or Tails with friends</li>
+                    <li>Coin flipping to determine which of two teams start a match</li>
+                    <li>Determining the winner of a tie</li>
+                </ul>
+            </p>
+            </div>
+        </div>
         <style>
             .round {
                 border-radius: 100px;
