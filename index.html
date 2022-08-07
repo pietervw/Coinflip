@@ -23,7 +23,7 @@
     <link rel="canonical" href="https://coin-flip.webr.co.za/">
     <!-- <link rel="shortcut icon" href="favicon.ico">  -->
     <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
-
+    <meta name="mobile-web-app-capable" content="yes">
     <!-- Google analytics -->
 </head>
 
@@ -34,21 +34,21 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3>🤞🏻 Coin Flip </h3>
-                <form id="frm" action="">
-                    <input id="btnGo" type="submit" value="👋 Flip" class="btn btn-lg btn-primary">
-                </form>
-                <br />
+               <br />
+               <div class="row">
+                <!-- center align column with bootstrap offset -->
+                <div class="col-sm-offset-3 col-sm-6"  class="round">
+           
                 <div style="min-height:55px; text-align: center;">
-                <label id="lblResult" class="label label-default round">👆🏻 Flip the freaking coin!</label>
+                <label id="btnGo" class="label label-default round">👋 Click to Flip!</label>
+                <label id="resultText" class="label label-default" style="display:none"></label>
             </div>
+        </div>
         </div>
         </div>
 
         <div class="row">
             <div class="col-sm-12">
-
-
-
             <a href="#" id="btnClearHistory" style="float:right">❌ Clear history</a>
                 <!-- results table -->
                 <table class="table table-striped" id="tblResults">
@@ -68,12 +68,18 @@
 
         <style>
             .round {
-                border-radius: -83%;
-                padding: 8px;
+                border-radius: 100px;
                 font-size: x-large;
                 font-weight: bold;
                 text-align: center;
                 display: block;
+                user-select: none;
+                font-size: 5em;
+                
+            }
+
+            .round:hover {
+                cursor: pointer;
             }
         </style>
 </body>

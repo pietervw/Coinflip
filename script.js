@@ -1,27 +1,13 @@
 
 window.onload = function () {
-// on form submit, flip a coin and display the result
-document.getElementById("frm").onsubmit = function () {
+
+    // on btnGo click
+    document.getElementById("btnGo").onclick = function () {
 
     var result = executeFlip();
-
-    // execute every second
-    // var cnt = 10;
-    // var interval = setInterval(function () {
-    //     if (cnt < 10)
-    //     {
-    //         cnt++;
-    //         result = executeFlip();
-    //     }
-    //     else    
-    //     interval = null;
-    // }, 10);
-    
     
     saveResult(result);
     displayResults(); 
-     
-
 
     // prevent the form from submitting
     return false;
@@ -32,23 +18,40 @@ function executeFlip()
     disableButton();
     // flip a coin
     var result = flipCoin();
-    var text = formatResult(result);
+    var icon = getResultIcon(result);
+    var text = getResultText(result);
+
     // display the result
-    document.getElementById("lblResult").innerHTML = text;
-    // add bootstrap success style to label
-    document.getElementById("lblResult").className = getResultClass(result) + " round";
+    document.getElementById("btnGo").innerHTML = icon;
+    document.getElementById("btnGo").className = getResultClass(result) + " round";
+    document.getElementById("resultText").innerText = text;
+    showLabel()
+// set label text
+
     return result;
 }
 
 
 // format result for display
-function formatResult(result) {
-    return result.result ? "Heads 🐶" : "Tails 🐩";
+function getResultIcon(result) {
+    return result.result ? "➕" : "➖️";
+}
+
+function getResultText(result) {
+    return result.result ? "Heads" : "Tails";
 }
 
 // get result class
 function getResultClass(result) {
     return result.result ? "label label-success" : "label label-warning";
+}
+
+function hideLabel() {
+    document.getElementById("resultText").style.display = "none";
+}
+
+function showLabel() {
+    document.getElementById("resultText").style.display = "";
 }
 
 // disable button for a short while
@@ -70,10 +73,11 @@ function flipCoin() {
 // btnClearHistory click
 document.getElementById("btnClearHistory").onclick = function () {
     clearResults();
-    // reset lblResult
-    document.getElementById("lblResult").innerHTML = "👆🏻 Flip the freaking coin!";
-    document.getElementById("lblResult").className = "label label-default round";
+    // reset btnGo
+    document.getElementById("btnGo").innerHTML = "👋 Click here to begin!";
+    document.getElementById("btnGo").className = "label label-default round";
     displayResults();
+    hideLabel();
 }
 
 
@@ -117,7 +121,8 @@ function displayResults() {
 
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
-        cell1.innerHTML = '<label class=\"' + getResultClass(results[i]) + '\">' + formatResult(results[i]) + "</label>";
+        cell1.innerHTML = '<label class=\"' + getResultClass(results[i]) + '\">' + getResultIcon(results[i]) + 
+        ' &nbsp;' + getResultText(results[i]) + '</label>';
         cell2.innerHTML = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
     }
 }
